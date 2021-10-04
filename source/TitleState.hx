@@ -294,7 +294,7 @@ class TitleState extends MusicBeatState
 			{
 				// Get current version of Kade Engine
 				
-				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
+				var http = new haxe.Http("https://raw.githubusercontent.com/itsDARK768/Kade-Engine/master/version.downloadMe");
 				var returnedData:Array<String> = [];
 				
 				http.onData = function (data:String)
@@ -303,7 +303,7 @@ class TitleState extends MusicBeatState
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
 				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !OutdatedSubState.leftState)
 					{
-						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
+						trace('You Fricken Old As Heck Get A New Version ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
 						OutdatedSubState.needVer = returnedData[0];
 						OutdatedSubState.currChanges = returnedData[1];
 						FlxG.switchState(new OutdatedSubState());
@@ -311,25 +311,26 @@ class TitleState extends MusicBeatState
 					}
 					else
 					{
-						FlxG.switchState(new MainMenuState());
-						clean();
+						FlxG.switchState(new MainMenuState()); // KadeDevloper Is A Swag And Life Destroying Frog With Heck Lookin Code
+						clean(); // Nothing Personal KadeDevloper
 					}
 				}
 				
 				http.onError = function (error) {
 				  trace('error: $error');
 				  FlxG.switchState(new MainMenuState()); // fail but we go anyway
-				  clean();
+				  clean(); // Then why did you put it there?
 				}
 				
 				http.request();
 			});
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
+			// Ima Keep it here cuz yes
 		}
 
 		if (pressedEnter && !skippedIntro && initialized)
 		{
-			skipIntro();
+			skipIntro(); // Your typical FNF pros dont wait on the intro, they are lame.
 		}
 
 		super.update(elapsed);
@@ -373,21 +374,28 @@ class TitleState extends MusicBeatState
 		danceLeft = !danceLeft;
 
 		if (danceLeft)
-			gfDance.animation.play('danceRight');
+			gfDance.animation.play('danceRight'); // LEFT
 		else
-			gfDance.animation.play('danceLeft');
+			gfDance.animation.play('danceLeft'); // RIGHT
+		
+                super.beatHit();
 
+		FlxTween.tween(FlxG.camera, {zoom:1.05}, 0.3, {ease: FlxEase.quadOut, type: BACKWARD});
 		FlxG.log.add(curBeat);
+		FlxG.log.add(curBeat);
+		// The VS Sunday Mod Zooming At Intro
+		// God Bless bbpanzu
+		// Go give bbpanzu some subs https://www.youtube.com/c/bbpanzuRulesSoSubscribeplz123
 
 		switch (curBeat)
 		{
 			case 0:
 				deleteCoolText();
 			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er', 'KadeDevloper, Cval just bc yes]);
 			// credTextShit.visible = true;
 			case 3:
-				addMoreText('present');
+				addMoreText('Show You');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
@@ -397,15 +405,15 @@ class TitleState extends MusicBeatState
 			// credTextShit.screenCenter();
 			case 5:
 				if (Main.watermarks)
-					createCoolText(['Kade Engine', 'by']);
+					createCoolText(['Delta Engine', 'by']);
 				else
-					createCoolText(['In Partnership', 'with']);
+					createCoolText(['none', 'none']);
 			case 7:
 				if (Main.watermarks)
-					addMoreText('KadeDeveloper');
+					addMoreText('Wow6432');
 				else
 				{
-					addMoreText('Newgrounds');
+					addMoreText('OldGrounds');
 					ngSpr.visible = true;
 				}
 			// credTextShit.text += '\nNewgrounds';
@@ -428,13 +436,13 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
+				addMoreText('Delta');
 			// credTextShit.visible = true;
 			case 14:
 				addMoreText('Night');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+				addMoreText('Chillin'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
@@ -445,7 +453,7 @@ class TitleState extends MusicBeatState
 
 	function skipIntro():Void
 	{
-		if (!skippedIntro)
+		if (!skippedIntro) // Again Lame
 		{
 			remove(ngSpr);
 
@@ -458,13 +466,13 @@ class TitleState extends MusicBeatState
 
 			new FlxTimer().start(0.01, function(tmr:FlxTimer)
 				{
-					if(logoBl.angle == -4) 
-						FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut});
+					if(logoBl.angle == -4) // Swag
+						FlxTween.angle(logoBl, logoBl.angle, 4, 4, {ease: FlxEase.quartInOut}); // Logo Go SPIN
 					if (logoBl.angle == 4) 
-						FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut});
+						FlxTween.angle(logoBl, logoBl.angle, -4, 4, {ease: FlxEase.quartInOut}); // Logo Go SPIN
 				}, 0);
 
-			skippedIntro = true;
+			skippedIntro = true; // Ok i might remove it somehow
 		}
 	}
 }
